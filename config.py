@@ -18,7 +18,7 @@ BOT_TOKEN = getenv("BOT_TOKEN")
 # -------------------------------------------------------
 OWNER_USERNAME = getenv("OWNER_USERNAME","KatsuID")
 # --------------------------------------------------------
-BOT_USERNAME = getenv("BOT_USERNAME" , "NyxMusicBot")
+BOT_USERNAME = getenv("BOT_USERNAME" , "Arfina_bot")
 # --------------------------------------------------------
 BOT_NAME = getenv("BOT_NAME" , "NyxMusic Bot")
 # ---------------------------------------------------------
