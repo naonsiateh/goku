@@ -40,13 +40,13 @@ update() {
 
 packages(){
 	if ! command -v pip &>/dev/null; then
-		pprint "Couldn't found pip, installing now..."
+		pprint "Couldn't find pip, installing now..."
 		sudo apt install python3-pip -y 2>pypilog.txt 1>/dev/null &&
 		pprint "SUCCESS.\n\n" "cgreen" || (pprint "FAIL.\n\n" "cred"; exit 1)
 	fi
 
 	if ! command -v ffmpeg &>/dev/null; then
-		pprint "Couldn't found ffmpeg, installing now..."
+		pprint "Couldn't find ffmpeg, installing now..."
 		if sudo apt install ffmpeg -y &>/dev/null;then
 			pprint "SUCCESS.\n\n" "cgreen"
 		else
@@ -61,7 +61,6 @@ packages(){
 	pprint "Playing live streams not going to work since you have ffmpeg $fv, live streams are supported by version 4+.\n" "cblue"
 }
 
-
 node(){
 	command -v npm &>/dev/null && return
 	pprint "Installing Nodejs and Npm..  "
@@ -70,7 +69,6 @@ node(){
 	sudo npm i -g npm &>>nodelog.txt &&
 	pprint "SUCCESS!\n" "cgreen" || (pprint "FAIL.\n" "cred"; exit 1)
 }
-
 
 installation(){
 	pprint "\n\nUpgrading pip and installing dependency packages..."
@@ -102,7 +100,7 @@ pprint "\nEnter Your Values Below\n\n\n"
 pprint "API ID: "; color_reset; read api_id
 pprint "\nAPI HASH: "; color_reset; read api_hash
 pprint "\nBOT TOKEN: "; color_reset; read bot_token
-pprint "\nOWNER ID:"; color_reset; read ownid
+pprint "\nOWNER ID: "; color_reset; read ownid
 pprint "\nMONGO DB URI: "; color_reset; read mongo_db
 pprint "\nLOG GROUP ID: "; color_reset; read logger
 pprint "\nSTRING SESSION: "; color_reset; read string_session
@@ -113,13 +111,13 @@ if [ -f .env ]; then
 	rm .env
 fi
 
-echo """API_ID = $api_id
-API_HASH = $api_hash
-BOT_TOKEN = $bot_token
-MONGO_DB_URI = $mongo_db
-LOGGER_ID = $logger
-STRING_SESSION = $string_session
-OWNER_ID = $ownid""" > .env
+echo """API_ID=$api_id
+API_HASH=$api_hash
+BOT_TOKEN=$bot_token
+MONGO_DB_URI=$mongo_db
+LOGGER_ID=$logger
+STRING_SESSION=$string_session
+OWNER_ID=$ownid""" > .env
 clear
 
 pprint "\n\n\nThanks for using GOKUMUSIC installer, your vars have been saved successfully ! \nIf you wanna add more variables add them in your env by : vi .env"
